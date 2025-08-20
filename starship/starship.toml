@@ -17,6 +17,7 @@ palette = "nord"
 [character]
 success_symbol = '[➜](teal)'
 error_symbol = '[➜](red)'
+
 [fill]
 symbol = ' '
 
