@@ -1,0 +1,2 @@
+# --- Eza ---
+alias ls="eza -l --icons=always"
