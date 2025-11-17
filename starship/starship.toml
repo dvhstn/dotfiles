@@ -1,0 +1,42 @@
+format = """
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$java\
+$aws\
+$docker_context\
+$cmd_duration\
+$line_break\
+$character\
+"""
+
+add_newline = true
+palette = "nord"
+
+[fill]
+symbol = ' '
+
+[character]
+success_symbol = '[➜](bold green)'
+error_symbol = '[➜](bold red)'
+
+[directory]
+style = 'teal'
+
+[git_branch]
+symbol = ' '
+style = 'green'
+
+[palettes.nord]
+dark_blue = '#5E81AC'
+blue = '#81A1C1'
+teal = '#88C0D0'
+red = '#BF616A'
+orange = '#D08770'
+green = '#A3BE8C'
+yellow = '#EBCB8B'
+purple = '#B48EAD'
+gray = '#434C5E'
+black = '#2E3440'
+white='#D8DEE9'
