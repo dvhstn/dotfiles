@@ -6,4 +6,4 @@
 */target/
 
 # --- Mise ---
-.tool-version
+mise.toml
