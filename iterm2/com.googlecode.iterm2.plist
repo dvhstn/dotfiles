@@ -1196,9 +1196,9 @@
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>1</integer>
 	<key>TerminalMargin</key>
-	<integer>10</integer>
+	<integer>0</integer>
 	<key>TerminalVMargin</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>kCPKSelectionViewPreferredModeKey</key>
