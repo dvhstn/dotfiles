@@ -8,6 +8,9 @@
 # --- Mise ---
 mise.toml
 
+# --- Env Files ---
+.env
+
 # --- VSCode ---
 .vscode/*
 !.vscode/settings.json
