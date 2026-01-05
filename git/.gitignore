@@ -2,8 +2,9 @@
 .DS_store
 
 # --- Intellij ---
-*/.idea
-*/target/
+**/.idea
+**/target/
+
 
 # --- Mise ---
 mise.toml
