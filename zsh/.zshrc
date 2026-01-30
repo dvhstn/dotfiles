@@ -8,3 +8,4 @@ eval "$(mise activate zsh)"
 # --- Starship :: Keep EOF ---
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
+export PATH="$HOME/.local/bin:$PATH"
