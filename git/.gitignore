@@ -20,3 +20,13 @@ mise.toml
 !.vscode/extensions.json
 !.vscode/*.code-snippets
 
+# --- Python ---
+__pycache__/
+build/
+*.pyc
+.venv/
+.env
+.runnable/
+.mypy_cache/
+.pytest_cache/
+ruff_cache/
