@@ -8,6 +8,7 @@ mise.toml
 
 # --- Env Files ---
 .env
+.evv.example
 
 # --- VSCode ---
 .vscode/*
@@ -35,9 +36,7 @@ coverage/
 .cache/
 
 # Frontend env files
-.env.local
-.env.development.local
-.env.production.local
+.env
 
 # macOS
 .DS_Store
