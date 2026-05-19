@@ -1034,8 +1034,6 @@
 			<true/>
 			<key>Window Type</key>
 			<integer>0</integer>
-			<key>Working Directory</key>
-			<string>/Users/davidhouston</string>
 		</dict>
 	</array>
 	<key>SoundForEsc</key>
