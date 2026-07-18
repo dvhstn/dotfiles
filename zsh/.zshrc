@@ -5,6 +5,9 @@ else
   BREW_PREFIX="/usr/local"
 fi
 
+# --- PATH ---
+export PATH="$HOME/.local/bin:$PATH"
+
 # --- ZSH Plugins ---
 source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$BREW_PREFIX/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
