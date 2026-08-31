@@ -17,6 +17,11 @@ fi
 echo "==> Installing packages and fonts from Brewfile"
 brew bundle --file="$DOTFILES_DIR/Brewfile"
 
+echo "==> Installing mise (via its own installer, not Homebrew)"
+if ! command -v mise &>/dev/null; then
+  curl -fsSL https://mise.run | sh
+fi
+
 echo "==> Symlinking zsh config"
 ln -sf "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
 
