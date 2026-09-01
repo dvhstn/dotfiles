@@ -2,22 +2,37 @@
 set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ZSH_PLUGINS_DIR="$HOME/.zsh/plugins"
 
-echo "==> Installing Homebrew (if needed)"
-if ! command -v brew &>/dev/null; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo "==> Installing starship"
+if ! command -v starship &>/dev/null; then
+  curl -sS https://starship.rs/install.sh | sh -s -- -y -b "$HOME/.local/bin"
 fi
 
-if [ -f /opt/homebrew/bin/brew ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+echo "==> Installing zsh plugins"
+mkdir -p "$ZSH_PLUGINS_DIR"
+
+if [ -d "$ZSH_PLUGINS_DIR/zsh-autosuggestions" ]; then
+  git -C "$ZSH_PLUGINS_DIR/zsh-autosuggestions" pull --ff-only
 else
-  eval "$(/usr/local/bin/brew shellenv)"
+  git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions "$ZSH_PLUGINS_DIR/zsh-autosuggestions"
 fi
 
-echo "==> Installing packages and fonts from Brewfile"
-brew bundle --file="$DOTFILES_DIR/Brewfile"
+if [ -d "$ZSH_PLUGINS_DIR/fast-syntax-highlighting" ]; then
+  git -C "$ZSH_PLUGINS_DIR/fast-syntax-highlighting" pull --ff-only
+else
+  git clone --depth 1 https://github.com/zdharma-continuum/fast-syntax-highlighting "$ZSH_PLUGINS_DIR/fast-syntax-highlighting"
+fi
 
-echo "==> Installing mise (via its own installer, not Homebrew)"
+echo "==> Installing JetBrains Mono Nerd Font"
+if [ ! -f "$HOME/Library/Fonts/JetBrainsMonoNerdFont-Regular.ttf" ]; then
+  TMP_ZIP="$(mktemp -t jetbrains-mono-nerd-font).zip"
+  curl -fsSL -o "$TMP_ZIP" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+  unzip -o -q "$TMP_ZIP" -d "$HOME/Library/Fonts" "*.ttf"
+  rm -f "$TMP_ZIP"
+fi
+
+echo "==> Installing mise"
 if ! command -v mise &>/dev/null; then
   curl -fsSL https://mise.run | sh
 fi
