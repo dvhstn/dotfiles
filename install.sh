@@ -3,10 +3,22 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ZSH_PLUGINS_DIR="$HOME/.zsh/plugins"
+# No "latest" alias is published; bump this when you want a newer build.
+GHOSTTY_VERSION="1.3.1"
 
 echo "==> Installing starship"
 if ! command -v starship &>/dev/null; then
-  curl -sS https://starship.rs/install.sh | sh -s -- -y -b "$HOME/.local/bin"
+  curl -sS https://starship.rs/install.sh | sh -s -- -y -b "$HOME/.local/bin" >/dev/null
+fi
+
+echo "==> Installing Ghostty"
+if [ ! -d "/Applications/Ghostty.app" ]; then
+  TMP_DMG="$(mktemp -t ghostty).dmg"
+  curl -fsSL -o "$TMP_DMG" "https://release.files.ghostty.org/${GHOSTTY_VERSION}/Ghostty.dmg"
+  MOUNT_POINT="$(hdiutil attach "$TMP_DMG" -nobrowse -quiet | tail -1 | awk '{print $NF}')"
+  cp -R "$MOUNT_POINT/Ghostty.app" /Applications/
+  hdiutil detach "$MOUNT_POINT" -quiet
+  rm -f "$TMP_DMG"
 fi
 
 echo "==> Installing zsh plugins"
@@ -47,9 +59,10 @@ ln -sf "$DOTFILES_DIR/starship/starship.toml" "$HOME/.config/starship/starship.t
 echo "==> Setting global gitignore"
 git config --global core.excludesfile "$DOTFILES_DIR/git/.gitignore"
 
-echo "==> Pointing iTerm2 at dotfiles preferences"
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$DOTFILES_DIR/iterm2"
-defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+echo "==> Symlinking Ghostty config"
+mkdir -p "$HOME/.config/ghostty"
+for f in "$DOTFILES_DIR"/ghostty/*; do
+  ln -sf "$f" "$HOME/.config/ghostty/$(basename "$f")"
+done
 
 echo "==> Done. Restart your terminal (or run 'exec zsh') to pick up changes."
-echo "    Set your terminal font to 'JetBrainsMono Nerd Font' in iTerm2 if it isn't already."
