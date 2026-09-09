@@ -21,6 +21,12 @@ if [ ! -d "/Applications/Ghostty.app" ]; then
   rm -f "$TMP_DMG"
 fi
 
+echo "==> Fetching Ghostty icon"
+if [ ! -f "$DOTFILES_DIR/ghostty/ghostty.icns" ]; then
+  curl -fsSL -o "$DOTFILES_DIR/ghostty/ghostty.icns" \
+    "https://raw.githubusercontent.com/jasonlong/ghostty-theme-icons/main/icons/catppuccin-mocha/catppuccin-mocha.icns"
+fi
+
 echo "==> Installing zsh plugins"
 mkdir -p "$ZSH_PLUGINS_DIR"
 

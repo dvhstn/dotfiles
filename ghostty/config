@@ -1,3 +1,8 @@
 font-family = JetBrainsMono Nerd Font
 font-size = 13
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
+
+macos-icon = custom
+macos-custom-icon = ~/.config/ghostty/ghostty.icns
+
+tab-inherit-working-directory = false
