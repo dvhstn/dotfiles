@@ -1,8 +1,29 @@
-font-family = JetBrainsMono Nerd Font
+font-family = JetBrainsMono Nerd Font Mono
 font-size = 13
 theme = Catppuccin Mocha
 
+background-opacity = 0.9
+background-blur-radius = 20
+
+window-padding-x = 10
+window-padding-y = 10
+
 macos-icon = custom
 macos-custom-icon = ~/.config/ghostty/ghostty.icns
+macos-titlebar-style = hidden
 
 tab-inherit-working-directory = false
+
+cursor-style = block
+cursor-style-blink = false
+copy-on-select = true
+confirm-close-surface = false
+mouse-hide-while-typing = true
+scrollback-limit = 10000000
+shell-integration-features = cursor,sudo,title
+
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+keybind = cmd+alt+left_bracket=goto_split:previous
+keybind = cmd+alt+right_bracket=goto_split:next
+keybind = global:cmd+grave_accent=toggle_quick_terminal
