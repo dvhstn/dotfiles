@@ -1,6 +1,9 @@
 # PATH
 export PATH="$HOME/.local/bin:$PATH"
 
+# MISE
+eval "$(mise activate zsh)"
+
 # COMPLETION
 source "$HOME/.dotfiles/zsh/completion.zsh"
 
