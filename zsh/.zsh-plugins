@@ -1,0 +1,10 @@
+# -- Plugins (git submodules)
+ZSH_PLUGINS=~/.dotfiles/zsh/plugins
+
+# -- Completions (fpath must be set before compinit)
+fpath=("$ZSH_PLUGINS/zsh-completions/src" $fpath)
+autoload -Uz compinit && compinit
+
+source "$ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# Keep last of the plugins
+source "$ZSH_PLUGINS/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
